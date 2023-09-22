@@ -25,10 +25,12 @@ prep:buildx:
 build:snapshot:
   stage: build
   image: docker
+  needs:
+    - job: prep:buildx
+      artifacts: true
   services:
     - name: docker:dind
       command: ["--experimental"]
-  stage: docker
   before_script:
     - mkdir -p ~/.docker/cli-plugins
     - mv buildx ~/.docker/cli-plugins/docker-buildx
