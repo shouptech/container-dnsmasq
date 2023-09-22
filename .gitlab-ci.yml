@@ -17,11 +17,6 @@ prep:buildx:
     - export DOCKER_BUILDKIT=1
     - git clone https://github.com/docker/buildx.git ./docker-buildx
     - docker build --platform=local -o . ./docker-buildx
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-      when: never
-
-
 
 # build:tag:
 #   stage: build
